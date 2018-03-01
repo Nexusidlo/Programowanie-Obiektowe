@@ -1,58 +1,13 @@
 #include <iostream>
 #include <math.h>
+#include "point.h"
 using namespace std;
-
-class point {
-   private:
-    float x, y;
-   public:
-
-    void setX(float x)
-   {
-       this->x = x;
-   }
-
-    void setY(float y)
-    {
-       this->y = y;
-   }
-
-    float getX()
-    {
-        return x;
-    }
-
-    float getY()
-    {
-        return y;
-    }
-
-    void moveVec(float xM, float yM)
-    {
-        x = x + xM;
-        y = y + yM;
-    }
-
-    void movePoint(point P2)
-    {
-        x += P2.getX();
-        y += P2.getY();
-    }
-
-    point(float x, float y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-   point(){};
-};
-
 
 float distance(point P1, point P2){
     return sqrt( pow( (P1.getX() - P2.getX()) , 2) + pow( (P1.getY() - P2.getY() ), 2 ) );
 }
 
-int main(int argc, char *argv[])
+int main()
 {
    point P1 = point();
     P1.setX(10);
