@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Account {
+  private:
+    int id; // - numer konta, liczba całkowita,
+    float balance; // - saldo, liczba zmiennoprzecinkowa,
+float [100]history; // - 100-elementowa tablica liczb zmiennoprzecinkowych,
+int transactions; // - ilość transakcji wykonanych na tym koncie,
+
+public:
+
+int getID(){
+return ID;
+}
+
+float getBalance(){
+return balance;
+}
+
+void setID(int ID){
+this->ID = ID;
+}
+
+void setBalance(int balance){
+this->balance = balance;
+}
+
+void transactions (float zmiana){
+
+
+gettery i settery do pól id i balance,
+transaction - przyjmującą liczbę zmiennoprzecinkową, zapisującą ją w historii dodającą ją do pola balance,
+last - zwracająca wartość ostatniej transakcji,
+showHistory - wyświetlająca wszystkie dotychczasowe transakcje i odpowiadające im stany konta.
