@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+class trojkat {
+   public:
+    int a;
+    int b;
+    int c;
+};
+
+int obwod (trojkat T){
+    return T.a + T.b + T.c;
+}
+
+
+int main(int argc, char *argv[])
+{
+   trojkat T = trojkat();
+   T.a=5;
+   T.b=5;
+   T.c=5;
+
+    int obw = obwod(T);
+    cout << "Obw wynosi: " << obw << ". I jak, dziala?" << endl;
+    return 0;
+}
