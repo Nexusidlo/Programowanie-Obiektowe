@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+class point {
+   private:
+    float x, y;
+   public:
+
+    void setX(float x)
+    {
+        this->x = x;
+    }
+
+    void setY(float y)
+    {
+        this->y = y;
+    }
+
+    float getX()
+    {
+        return x;
+    }
+
+    float getY()
+    {
+        return y;
+    }
+
+};
+
+
+
+int main(int argc, char *argv[])
+{
+   point P = point();
+
+    P.setX(10);
+    P.setY(23.43);
+
+    cout << "X: " << P.getX() << " Y: " << P.getY() << endl;
+    return 0;
+}
