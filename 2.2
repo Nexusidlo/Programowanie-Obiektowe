@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <math.h>
 using namespace std;
 
 class point {
@@ -8,14 +8,14 @@ class point {
    public:
 
     void setX(float x)
-    {
-        this->x = x;
-    }
+   {
+       this->x = x;
+   }
 
     void setY(float y)
     {
-        this->y = y;
-    }
+       this->y = y;
+   }
 
     float getX()
     {
@@ -27,17 +27,48 @@ class point {
         return y;
     }
 
+    void moveVec(float xM, float yM)
+    {
+        x = x + xM;
+        y = y + yM;
+    }
+
+    void movePoint(point P2)
+    {
+        x += P2.getX();
+        y += P2.getY();
+    }
+
+    point(float x, float y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+   point(){};
 };
 
 
+float distance(point P1, point P2){
+    return sqrt( pow( (P1.getX() - P2.getX()) , 2) + pow( (P1.getY() - P2.getY() ), 2 ) );
+}
 
 int main(int argc, char *argv[])
 {
-   point P = point();
+   point P1 = point();
+    P1.setX(10);
+    P1.setY(23.43);
 
-    P.setX(10);
-    P.setY(23.43);
+    cout << "X: " << P1.getX() << " Y: " << P1.getY() << endl;
+    P1.moveVec(14.74, -12.18);
+    cout << "X: " << P1.getX() << " Y: " << P1.getY() << endl;
 
-    cout << "X: " << P.getX() << " Y: " << P.getY() << endl;
-    return 0;
+     point P2(7.41, -41.4);
+
+
+     P1.movePoint(P2);
+   cout << "X: " << P1.getX() << " Y: " << P1.getY() << endl;
+
+   float dist = distance(P1, P2);
+   cout << "Odleglosc P1 i P2: " << dist << endl;
+     return 0;
 }
