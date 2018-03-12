@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 void check(string napis){
@@ -26,8 +27,8 @@ int main()
 
 cout << "Podaj napis:" << endl;
     string napis;
-    cin >> napis;
-
+    getline(cin, napis);
+    cout << napis << endl;
     check(napis);
     return 0;
 }
