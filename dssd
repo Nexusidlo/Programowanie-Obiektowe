@@ -1,0 +1,84 @@
+#include <iostream>
+
+using namespace std;
+
+class Polygon {
+
+public: struct Point{
+        float x,y;
+        };
+
+private: Point **punkty;
+int NoMaxPoints, NoPoints;
+
+public:
+
+Polygon(){
+    NoMaxPoints = 4;
+    NoPoints = 0;
+    punkty = new Point*[NoMaxPoints];  // *[4]()
+}
+
+~Polygon(){
+    for (int i = 0; i < NoPoints; i++)
+        delete punkty[i];
+     delete punkty;
+    //free(punkty);
+}
+
+Polygon(int n){
+    while (true) {
+        if (n%4 == 0) {
+            NoMaxPoints = n;
+            break; }
+        else n++;
+    }
+    NoPoints = 0;
+    punkty = new Point*[NoMaxPoints];
+}
+
+void printData(){
+    cout << NoPoints << " elementow z " << NoMaxPoints << " mozliwych." << endl;
+    for (int i = 0; i < NoPoints; i++)
+    cout << "x: " << punkty[i]->x << "   y: " << punkty[i]->y << endl;
+}
+
+
+
+void add(Point p) {
+    cout << " lololol" << endl;
+   if (NoPoints == NoMaxPoints) {
+        NoMaxPoints+=4;
+        Point **pointsCpy = punkty;
+        punkty = new Point*[NoMaxPoints];
+        for (int i = 0; i < NoPoints; i++) {
+            punkty[i] = pointsCpy[i];
+        }
+   delete pointsCpy;
+   }
+
+    punkty[NoPoints] = p; // stworzo biekt i przypisz wartosc
+    NoPoints++;
+}
+
+Point* ref (int n){
+    return punkty[n];
+}
+};
+
+int main()
+{
+    Polygon pol1;
+    pol1.printData();
+    Polygon pol2(13);
+    pol2.printData();
+
+    Polygon::Point pkt;
+    pkt.x = 10;
+    pkt.y = 3.14;
+
+    pol2.add(pkt);
+
+    pol2.printData();
+    return 0;
+}
