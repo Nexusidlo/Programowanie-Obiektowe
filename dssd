@@ -2,83 +2,67 @@
 
 using namespace std;
 
-class Polygon {
+///////////////////////// 1
+namespace pt {
+ class Point{
+ protected:
+     int x, y;
+ public:
+     int getX(){
+         return x; }
 
-public: struct Point{
-        float x,y;
-        };
+     int getY(){
+         return y; }
 
-private: Point **punkty;
-int NoMaxPoints, NoPoints;
+     Point (){
+     x = 0;
+     y = 0;
+     cout << "elooo zrobilem go " << endl;}
 
+     Point (int x, int y){
+         this->x = x;
+         this->y = y;
+     }
+     void printPoint() {
+       cout << "x: " << x << "\t y: " << y << endl;}
+ };
+}
+
+/////////////////////// 2
+class Point3D : public pt::Point {
+    int z;
 public:
-
-Polygon(){
-    NoMaxPoints = 4;
-    NoPoints = 0;
-    punkty = new Point*[NoMaxPoints];  // *[4]()
-}
-
-~Polygon(){
-    for (int i = 0; i < NoPoints; i++)
-        delete punkty[i];
-     delete punkty;
-    //free(punkty);
-}
-
-Polygon(int n){
-    while (true) {
-        if (n%4 == 0) {
-            NoMaxPoints = n;
-            break; }
-        else n++;
+    Point3D(int x, int y, int z) : Point(x,y) {
+        this->z = z;
     }
-    NoPoints = 0;
-    punkty = new Point*[NoMaxPoints];
-}
+};
 
-void printData(){
-    cout << NoPoints << " elementow z " << NoMaxPoints << " mozliwych." << endl;
-    for (int i = 0; i < NoPoints; i++)
-    cout << "x: " << punkty[i]->x << "   y: " << punkty[i]->y << endl;
-}
+////////////////////// 3
+class Polygon {
+    pt::Point *points;
+    int size;
+public:
+    Polygon(int size){
+        this->size = size;
+        points = new pt::Point[ size ];
+    }
+    void addPoint(Point p){
+        
+    }
 
-
-
-void add(Point p) {
-    cout << " lololol" << endl;
-   if (NoPoints == NoMaxPoints) {
-        NoMaxPoints+=4;
-        Point **pointsCpy = punkty;
-        punkty = new Point*[NoMaxPoints];
-        for (int i = 0; i < NoPoints; i++) {
-            punkty[i] = pointsCpy[i];
-        }
-   delete pointsCpy;
-   }
-
-    punkty[NoPoints] = p; // stworzo biekt i przypisz wartosc
-    NoPoints++;
-}
-
-Point* ref (int n){
-    return punkty[n];
-}
+    static Polygon triangle( pt::Point P1, pt::Point P2, pt::Point P3){
+       
+    }
 };
 
 int main()
 {
-    Polygon pol1;
-    pol1.printData();
-    Polygon pol2(13);
-    pol2.printData();
-
-    Polygon::Point pkt;
-    pkt.x = 10;
-    pkt.y = 3.14;
-
-    pol2.add(pkt);
-
-    pol2.printData();
+    cout << "Hello World!" << endl;
+    pt::Point P1(4, 8);
+    cout << "x: " << P1.getX() << "\t y: " << P1.getY() << endl;
+    pt::Point P2();
+    P1.printPoint();
+  //  P2.printPoint();
+  //  cout << "x: " << P2.getX() << "\t y: " << P2.getY() << endl;
     return 0;
 }
