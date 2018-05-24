@@ -1,0 +1,103 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+
+#ifndef ARRAY_H
+#define ARRAY_H
+
+template <typename T>
+class Array {
+    unsigned int m_size;
+    T *arr;
+public:
+    Array(int size);
+    ~Array();
+    int size();
+    T& operator[](int index);
+};
+
+template <typename T>
+Array<T>::Array(int size) {
+    this->m_size=size;
+    this->arr=new T[size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = i; }
+}
+
+template <typename T>
+Array<T>::~Array() {
+    delete [] arr;
+}
+
+template <typename T>
+int Array<T>::size() {
+    return m_size;
+}
+
+template <typename T>
+T& Array<T>::operator[](int index) {
+    return arr[index];
+}
+
+
+#endif // ARRAY_H
+
+
+template<typename T>
+class CustomIterator {
+    T *element;
+    int index;
+public:
+    CustomIterator(Array *element){
+        this->element = element;
+        index = 0;
+    }
+
+    CustomIterator& operator++(){
+        if (indeks < element->size())
+            indeks++;
+    }
+
+    T operator *() {
+        return element->indeks;
+    }
+
+    /*
+    CustomIterator& operator++(){
+        element= element+1;
+            return *this;
+    }
+
+    CustomIterator operator++ (){
+         CustomIterator resolut (*this);
+            ++(*this);
+            return resolut;
+}
+    CustomIterator& operator+=(T cos){
+         element= element+cos;
+            return &element;
+    }
+
+    CustomIterator& operator*(){
+        element= element+1;
+            return *this;
+    } */
+};
+
+
+int main(int argc, char *argv[])
+{
+    Array<float> tab(10);
+
+    cout << tab.size() << endl;
+    cout << tab[3] << endl;
+
+    CustomIterator < Array<float> > it(&tab);
+
+  // cout << it << enld;
+    return 0;
+
+}
