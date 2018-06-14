@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+void showWordWithLetter(string napis, char znak, )
+
+struct Point{
+    float x, y;
+};
+
+int main()
+{
+    vector<int> dane;
+        dane.push_back( 5 );
+        dane.push_back( 2 );
+        dane.push_back( 3 );
+        dane.push_back( 1 );
+
+        //for (int i=0; i<dane.size(); i++){ cout << dane.at(i) << " ";}
+        for (int i:dane) cout << i << " ";
+
+        replace_if( dane.begin(), dane.end(), []( int z )->bool { return (z < 2 || z > 4 );  }  , 0 );
+
+        cout << endl;
+        for (int i:dane) cout << i << " ";
+
+
+        ////////////3
+        vector<Point> punkty;
+        punkty.push_back(Point(4,4));
+
+        return 0;
+
+}
